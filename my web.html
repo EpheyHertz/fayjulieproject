@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ng'ara na Pockie Sneakers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        button.white{
+            font-size: 13px;
+            font-weight: 600;
+            padding: 11px 18px;
+            color: #fff;
+            background-color: transparent;
+            cursor: pointer;
+            border: 1px solid #fff;
+            outline: none;
+            transition: 0.2s;
+        }
+        #feature {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header .contact-info {
+            text-align: right;
+        }
+        header .contact-info p {
+            margin: 5px 0;
+        }
+        header .contact-info p:first-child {
+            margin-top: 0;
+        }
+        header .contact-info .social-icons {
+            margin-top: 10px;
+        }
+        header .contact-info .social-icons a {
+            margin-right: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        header .contact-info .social-icons a:last-child {
+            margin-right: 0;
+        }
+        header .contact-info .social-icons a:hover {
+            color: #ccc;
+        }
+        .header-links {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .header-links a {
+            margin-right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .header-links a:hover {
+            color: #ccc;
+        }
+        .search-bar {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: hsl(0, 79%, 44%);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: hwb(78 9% 28%);
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .description {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .shoe-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 20px; 
+        }
+        .shoe {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .shoe img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .shoe-size select {
+            margin-top: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .shoe button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .shoe button:hover {
+            background-color: #555;
+        }
+        /* Cart styles */
+        .cart {
+            margin-top: 40px;
+        }
+        .cart h2 {
+            text-align: center;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .cart-item button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #banner3 .banner-box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background-image: url("smile.jpg");
+            min-width: 30%;
+            height: 30vh;
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        #banner3 .banner-box2{
+            background-image: url("gift\ 2.jpg");
+        }
+        
+         
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Ng'ara na Pockie Sneakers</h1>
+            <p>Jishikie kiatu yako na Bei Nafuu hapa Pockie Sneakers</p>
+        </div>
+        <div class="header-links">
+            <a href="LogIn.html">Login</a>
+            <a href="Register.html">Sign Up</a>
+            <a href="Payment.html">Payment</a>
+            <a href="about us page.html">About Us</a>
+            <a href="help page.html">Help</a> 
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="contact-info">
+            <div>
+                <p> Tel: 0743979124</p>
+                <p>Email: fayjulie43@gmail.com</p>
+            </div>
+            <div class="social-icons">
+                Follow us on:
+                <a href="#">Facebook</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="shoe-list">
+            <div class="shoe">
+                <img src="airforce.png" alt="Air force1 white">
+                <h2>Air force1 white</h2>
+                <p>Ksh 2000</p>
+                <div class="shoe-size">
+                    <label for="size-airforce">Select Size:</label>
+                    <select name="size-airforce" id="size-airforce">
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                    </select>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="shoe">
+                <img src="jordan4.png" alt="Jordan 4">
+                <h2>Jordan 4</h2>
+                <p>Ksh 3500</p>
+                <div class="shoe-size">
+                    <label for="size-jordan4">Select Size:</label>
+                    <select name="size-jordan4" id="size-jordan4">
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                    </select>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="shoe">
+                <img src="jordan 1 low.png" alt="Jordan 1 Low">
+                <h2>Jordan 1 Low</h2>
+                <p>Ksh 3000</p>
+                <div class="shoe-size">
+                    <label for="size-jordan1low">Select Size:</label>
+                    <select name="size-jordan1low" id="size-jordan1low">
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                    </select>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="shoe">
+                <img src="nike sb dunk.png" alt="Nike SB Dunk">
+                <h2>Nike SB Dunk</h2>
+                <p>Ksh 4200</p>
+                <div class="shoe-size">
+                    <label for="size-nikesbdunk">Select Size:</label>
+                    <select name="size-nikesbdunk" id="size-nikesbdunk">
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                    </select>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="shoe">
+                <img src="luis vuitton heels.png" alt="Louis Vuitton Heels">
+                <h2>Louis Vuitton Heels</h2>
+                <p>Ksh 5000</p>
+                <div class="shoe-size">
+                    <label for="size-louisvuittonheels">Select Size:</label>
+                    <select name="size-louisvuittonheels" id="size-louisvuittonheels">
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                    </select>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <div class="total" id="total">Total: Ksh 0</div>
+        </div>
+    </div>
+        
+         <section id="banner3">
+            <div class="banner-box">
+              <h2>SEASON SALE</h2>
+              <h3>Black Friday Discount -30% OFF</h3>
+            </div>
+            <div class="banner-box banner-box2">
+              <h2>HURRY UP</h2>
+              <h3>Black Friday Discount -30% OFF</h3>
+            </div> 
+          </section>    
+
+    <script>
+        const cart = [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalContainer = document.getElementById('total');
+
+        // Function to update the cart display
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <span>${item.name} - Ksh ${item.price} (Size: ${item.size})</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            totalContainer.textContent = `Total: Ksh ${total}`;
+        }
+
+        // Function to add items to the cart
+        function addToCart(name, price, size) {
+            cart.push({ name, price, size });
+            updateCart();
+        }
+
+        // Function to remove items from the cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Event listeners for Add to Cart buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                const shoe = document.querySelectorAll('.shoe')[index];
+                const name = shoe.querySelector('h2').textContent;
+                const price = parseFloat(shoe.querySelector('p').textContent.replace('Ksh ', ''));
+                const size = shoe.querySelector('select').value;
+                addToCart(name, price, size);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .signup-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sign In</h2>
+    <form id="signInForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Sign In</button>
+
+        <a href="#" class="signup-link" id="signupLink">Don't have an account? Sign Up</a>
+    </form>
+</div>
+
+<script>
+    // Sample user data for demonstration (this should come from a database in a real application)
+    const users = [
+        { email: "test@example.com", password: "password123" },
+        { email: "user@example.com", password: "mypassword" }
+    ];
+
+    document.getElementById('signInForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Validate user credentials
+        const user = users.find(user => user.email === email && user.password === password);
+
+        if (user) {
+            // If login is successful, show success message
+            alert('Login successful! Redirecting to home page...');
+            window.location.href = 'my web.html'; // Redirect to your home page
+        } else {
+            // If login fails, show error message
+            alert('Invalid email or password. Please try again.');
+        }
+    });
+
+    document.getElementById('signupLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        // Redirect to the registration form
+        window.location.href = 'Register.html'; // Replace with your actual registration page
+    });
+</script>
+
+</body>
+</html>

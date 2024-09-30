@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ng'ara na Pookie Sneakers Registration</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <style>
+        /* General styling for the form container */
+        .signup-box {
+            width: 400px; /* Adjusts the width of the box */
+            margin: 50px auto; /* Centers the box horizontally */
+            padding: 20px;
+            border: 1px solid #ccc; /* Slightly visible box */
+            border-radius: 10px; /* Rounded corners for the box */
+            background-color: #f9f9f9; /* Light background color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+            font-size: 16px; /* Medium font size */
+            text-align: left; /* Left alignment */
+        }
+
+        /* Form header */
+        .signup-box h2 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Labels */
+        .signup-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* Input fields and textarea */
+        .signup-box input[type="text"],
+        .signup-box input[type="email"],
+        .signup-box input[type="tel"],
+        .signup-box input[type="date"],
+        .signup-box input[type="password"],
+        .signup-box textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensures padding does not affect width */
+        }
+
+        /* Checkbox styling */
+        .signup-box input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* Submit button */
+        .signup-box button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff; /* Blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .signup-box button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+            padding-top: 60px; /* Location of the box */
+        }
+
+        /* Modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Could be more or less, depending on screen size */
+            text-align: center; /* Centered text */
+            border-radius: 10px; /* Rounded corners for modal */
+        }
+
+        /* Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <form id="registrationForm" onsubmit="return submitForm(event);">
+            <h2>Ng'ara na Pookie Sneakers Registration Form</h2>
+            
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+        
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+        
+            <label for="address">Shipping Address:</label>
+            <textarea id="address" name="address" required></textarea>
+        
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        
+            <label for="promoCode">Promo Code (if applicable):</label>
+            <input type="text" id="promoCode" name="promoCode">
+        
+            <label>
+                <input type="checkbox" required>  I agree to the <a href="#">Terms</a> and <a href="#">Conditions.</a> 
+            </label>
+        
+            <button type="submit">Submit</button>
+        </form>
+    </div> 
+
+    <!-- Modal for result messages -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p id="modalMessage"></p>
+            <button id="okButton"><a href="my web.html">OK</a></button>
+        </div>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Simulate form submission logic
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const dob = document.getElementById('dob').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            let isSuccess = true; // Simulate success condition
+            
+            // Check for password match
+            if (password !== confirmPassword) {
+                isSuccess = false; // Registration failed due to password mismatch
+            }
+
+            showModal(isSuccess ? "Registration successful!" : "Registration failed!");
+
+            return false; // Prevent actual form submission
+        }
+
+        // Show modal with message
+        function showModal(message) {
+            document.getElementById('modalMessage').textContent = message;
+            document.getElementById('resultModal').style.display = "block";
+
+            // Handle OK button click
+            document.getElementById('okButton').onclick = function() {
+                if (message.includes("successful")) {
+                    window.location.href = "/home"; // Redirect to home page
+                } else {
+                    document.getElementById('registrationForm').reset(); // Reset the form for re-registration
+                    document.getElementById('resultModal').style.display = "none"; // Close modal
+                }
+            };
+        }
+
+        // Close modal when the user clicks on <span> (x)
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('resultModal').style.display = "none";
+        };
+
+        // Close modal when the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('resultModal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+</html>

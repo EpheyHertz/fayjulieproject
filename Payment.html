@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ng'ara na Pookie Sneakers Payment Form</title>
+    <style>
+        /* General styling for the form container */
+        .signup-box {
+            width: 400px; /* Adjusts the width of the box */
+            margin: 50px auto; /* Centers the box horizontally */
+            padding: 20px;
+            border: 1px solid #ccc; /* Slightly visible box */
+            border-radius: 10px; /* Rounded corners for the box */
+            background-color: #f9f9f9; /* Light background color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+            font-size: 16px; /* Medium font size */
+            text-align: left; /* Left alignment */
+        }
+
+        /* Form header */
+        .signup-box h2 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Labels */
+        .signup-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* Input fields and textarea */
+        .signup-box input[type="text"],
+        .signup-box input[type="email"],
+        .signup-box input[type="tel"],
+        .signup-box input[type="number"],
+        .signup-box select,
+        .signup-box textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensures padding does not affect width */
+        }
+
+        /* Checkbox styling */
+        .signup-box input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* Submit button */
+        .signup-box button[type="button"],
+        .signup-box button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff; /* Blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .signup-box button[type="button"]:hover,
+        .signup-box button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Hyperlink styling */
+        .signup-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signup-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Result message styling */
+        .result {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-box">
+        <h2>Ng'ara na Pookie Sneakers Payment Form</h2>
+        <form id="registrationForm">
+            <!-- Customer Information -->
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g., 0743979124" required>
+
+            <label for="credit">Credit Amount:</label>
+            <input type="number" id="credit" name="credit" placeholder="Enter your credit" required>
+
+            <!-- Product Selection -->
+            <label for="product1">Product 1:</label>
+            <select id="product1" name="product1">
+                <option value="" disabled selected>Select a product</option>
+                <option value="Shoes" data-price="2000">Shoes - KSh 2000</option>
+                <option value="Sandals" data-price="1500">Sandals - KSh 1500</option>
+                <option value="Sneakers" data-price="2500">Sneakers - KSh 2500</option>
+            </select>
+
+            <label for="product2">Product 2:</label>
+            <select id="product2" name="product2">
+                <option value="" disabled selected>Select a product</option>
+                <option value="Shoes" data-price="2000">Shoes - KSh 2000</option>
+                <option value="Sandals" data-price="1500">Sandals - KSh 1500</option>
+                <option value="Sneakers" data-price="2500">Sneakers - KSh 2500</option>
+            </select>
+
+            <!-- Terms and Conditions -->
+            <label>
+                <input type="checkbox" id="agreeTerms" required> I agree to the <a href="#">Terms</a> and <a href="#">Conditions.</a> 
+            </label>
+
+            <!-- Checkout Button -->
+            <button type="button" onclick="checkout()">Pay</button>
+        </form>
+
+        <!-- Result Message -->
+        <div class="result" id="resultMessage"></div>
+    </div>
+
+    <script>
+        // Define the Customer class
+        class Customer {
+            constructor(phoneNumber, credit) {
+                this.phoneNumber = phoneNumber;
+                this.credit = credit;
+            }
+        }
+
+        // Define the Product class
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+        }
+
+        // Checkout function
+        function checkout() {
+            // Get form values
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const credit = parseFloat(document.getElementById('credit').value);
+
+            const product1Select = document.getElementById('product1');
+            const product2Select = document.getElementById('product2');
+
+            const product1Name = product1Select.value;
+            const product1Price = parseFloat(product1Select.options[product1Select.selectedIndex].getAttribute('data-price')) || 0;
+
+            const product2Name = product2Select.value;
+            const product2Price = parseFloat(product2Select.options[product2Select.selectedIndex].getAttribute('data-price')) || 0;
+
+            // Create Customer instance
+            const customer = new Customer(phoneNumber, credit);
+
+            // Create Product instances
+            const products = [];
+            if (product1Name) {
+                products.push(new Product(product1Name, product1Price));
+            }
+            if (product2Name) {
+                products.push(new Product(product2Name, product2Price));
+            }
+
+            // Calculate total cost
+            const totalCost = products.reduce((sum, product) => sum + product.price, 0);
+
+            // Perform checkout
+            let resultMessage = "";
+            if (customer.credit >= totalCost) {
+                customer.credit -= totalCost;
+                resultMessage = `Payment successful! Total deducted: KSh ${totalCost}. Remaining credit: KSh ${customer.credit}.`;
+            } else {
+                resultMessage = "Payment failed: Insufficient credit.";
+            }
+
+            // Display the result
+            document.getElementById('resultMessage').textContent = resultMessage;
+        }
+    </script>
+
+</body>
+</html>

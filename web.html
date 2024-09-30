@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ng'ara na Poockie Sneakers </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header .contact-info {
+            text-align: right;
+        }
+        header .contact-info p {
+            margin: 5px 0;
+        }
+        header .contact-info p:first-child {
+            margin-top: 0;
+        }
+        header .contact-info .social-icons {
+            margin-top: 10px;
+        }
+        header .contact-info .social-icons a {
+            margin-right: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        header .contact-info .social-icons a:last-child {
+            margin-right: 0;
+        }
+        header .contact-info .social-icons a:hover {
+            color: #ccc;
+        }
+        .header-links {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .header-links a {
+            margin-right: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .header-links a:hover {
+            color: #ccc;
+        }
+        .search-bar {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: hsl(0, 79%, 44%);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: hwb(78 9% 28%);
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .description {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .shoe-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 20px; 
+        }
+        .shoe {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .shoe img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .shoe-size select {
+            margin-top: 8px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .shoe button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .shoe button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search..." oninput="searchShoes(this.value)">
+        <button>Search</button>
+        <div id="searchResults"></div> <!-- Container to display search results -->
+    </div>
+
+    <script>
+        // Your existing JavaScript code for adding items to cart
+        
+        // Function to search for shoes
+        function searchShoes(query) {
+            const shoes = document.querySelectorAll('.shoe');
+            const searchResultsContainer = document.getElementById('searchResults');
+            searchResultsContainer.innerHTML = ''; // Clear previous results
+
+            shoes.forEach(shoe => {
+                const shoeName = shoe.querySelector('h2').textContent.toLowerCase();
+                if (shoeName.includes(query.toLowerCase())) {
+                    const shoeClone = shoe.cloneNode(true); // Clone the shoe item
+                    shoeClone.querySelector('.add-to-cart').remove(); // Remove Add to Cart button
+                    searchResultsContainer.appendChild(shoeClone); // Append matching shoe to search results
+                }
+            });
+
+            if (searchResultsContainer.innerHTML === '') {
+                searchResultsContainer.innerHTML = '<p>No matching shoes found.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
+    <header>
+        <div class="logo">
+            <h1>Ng'ara na Poockie Sneakers</h1>
+            <p>Jishikie kiatu yako na Bei Nafuu hapa Poockie Sneakers</p>
+        </div>
+        <div class="header-links">
+            <a href="loginpage.html">Login</a>
+            <a href="sign up page.html">Sign Up</a>
+            <a href="about us page.html">About Us</a>
+            <a href="help page.html">Help</a> 
+        </div>
+        <div class="dropdowns">
+            <select name="men-shoes" id="men-shoes">
+                <option value="men-shoes">Men's Shoes</option>
+                <option value="formal">Formal Shoes</option>
+                <option value="sneakers">Sneakers</option>
+                <option value="boots">Boots</option>
+                <option value="casual">Casual Shoes</option>
+            </select>
+            <select name="lady-shoes" id="lady-shoes">
+                <option value="ladys">Ladies' Shoes</option>
+                <option value="flats">Flats</option>
+                <option value="sandals">Sandals</option>
+                <option value="boots">Boots</option>
+                <option value="heels">Heels</option>
+            </select> 
+            <select name="kids-shoes" id="kids-shoes">
+                <option value="kids shoes">Kids' Shoes</option>
+                <option value="sandals">Sandals</option>
+                <option value="boots">Boots</option>
+                <option value="flats">Flats</option>
+                <option value="sneakers">Sneakers</option>
+            </select>
+            <select name="unisex-shoes" id="unisex-shoes">
+                <option value="unisex-shoes">Unisex Shoes</option>
+                <option value="sandals">Sandals</option>
+                <option value="boots">Boots</option>
+                <option value="flats">Flats</option>
+                <option value="sneakers">Sneakers</option>
+            </select>
+            <select name="sports-shoes" id="sports-shoes">
+                <option value="sports- shoes">Sports Shoes</option>
+                <option value="basketball">Basketball Shoes</option>
+                <option value="soccer">Soccer Cleats</option>
+                <option value="training">Training Shoes</option>
+                <option value="running">Running Shoes</option>
+            </select>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="contact-info">
+            <div>
+                <p> Tel: 0114329940</p>
+                <p>Email: alexnjagi@gmail.com</p>
+            </div>
+            <div class="social-icons">
+                Follow us on:
+                <a href="#">Facebook</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="shoe">
+            <img src="airforce.png" alt="Air force1 white">
+            <h2>Air force1 white</h2>
+            <p>ksh 2000</p>
+            <div class="shoe-size">
+                <label for="size-airforce">Size:</label>
+                <select id="size-airforce">
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="shoe">
+            <img src="jordan4.png" alt="Jordan 4">
+            <h2>Jordan 4</h2>
+            <p>ksh 3500</p>
+            <div class="shoe-size">
+                <label for="size-jordan">Size:</label>
+                <select id="size-jordan">
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="shoe">
+            <img src="jordan4.png" alt="Jordan 4">
+            <h2>Jordan 4</h2>
+            <p>ksh 3500</p>
+            <div class="shoe-size">
+                <label for="size-jordan">Size:</label>
+                <select id="size-jordan">
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="shoe">
+            <img src="jordan4.png" alt="Jordan 4">
+            <h2>Jordan 4</h2>
+            <p>ksh 3500</p>
+            <div class="shoe-size">
+                <label for="size-jordan">Size:</label>
+                <select id="size-jordan">
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- Add more shoes here -->
+    </div>
+
+    <script>
+        // Add to Cart button click event listener
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const shoe = button.parentElement;
+                const shoeName = shoe.querySelector('h2').textContent;
+                const shoePrice = shoe.querySelector('p').textContent;
+                const shoeSize = shoe.querySelector('select').value;
+                const shoeImage = shoe.querySelector('img');
+                const shoeImageSrc = shoeImage.src;
+                const shoeImageWidth = shoeImage.width; // Get the width of the image
+                const shoeImageHeight = shoeImage.height; // Get the height of the image
+                const item = { name: shoeName, price: shoePrice, size: shoeSize, imageSrc: shoeImageSrc, imageWidth: shoeImageWidth, imageHeight: shoeImageHeight };
+
+                // Retrieve cart items from localStorage
+                const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Add new item to cart
+                cartItems.push(item);
+
+                // Store updated cart items back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+
+                // Redirect to the cart page
+                window.location.href = 'cart.html';
+            });
+        });
+    </script>
+</body>
+</html>
+

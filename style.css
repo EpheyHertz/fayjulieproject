@@ -1,0 +1,72 @@
+/* General styling for the form container */
+.signup-box {
+    width: 400px; /* Adjusts the width of the box */
+    margin: 50px auto; /* Centers the box horizontally */
+    padding: 20px;
+    border: 1px solid #ccc; /* Slightly visible box */
+    border-radius: 10px; /* Rounded corners for the box */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    font-size: 16px; /* Medium font size */
+    text-align: left; /* Left alignment */
+}
+
+/* Form header */
+.signup-box h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.signup-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Input fields and textarea */
+.signup-box input[type="text"],
+.signup-box input[type="email"],
+.signup-box input[type="tel"],
+.signup-box input[type="date"],
+.signup-box input[type="password"],
+.signup-box textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding does not affect width */
+}
+
+/* Checkbox styling */
+.signup-box input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Submit button */
+.signup-box button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signup-box button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Hyperlink styling */
+.signup-box a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-box a:hover {
+    text-decoration: underline;
+}

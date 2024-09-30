@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .signup-form input[type="text"],
+        .signup-form input[type="password"] {
+            width: 250px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .signup-form input[type="submit"] {
+            width: 150px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-form input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form class="signup-form" action="signup.php" method="POST" onsubmit="return validateForm()">
+            <input type="text" name="email_or_phone" placeholder="Email or Phone Number" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+            <span id="passwordMatchError" class="error-message" style="display: none;">Passwords do not match</span>
+            <input type="submit" value="Sign Up">
+        </form>
+        <p>Already have an account? <a href="login.php">Login</a></p>
+    </div>
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var passwordMatchError = document.getElementById("passwordMatchError");
+            
+            if (password !== confirmPassword) {
+                passwordMatchError.style.display = "block";
+                return false;
+            } else {
+                passwordMatchError.style.display = "none";
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
+
